@@ -8,12 +8,14 @@ import { User } from './user.model';
 import { AppState } from '../app.reducers';
 import { Store } from '../../../node_modules/@ngrx/store';
 import { ActivateLoadingAction, FinishLoadingAction } from '../shared/ui.actions';
+import { SetAuthAction } from './auth.actions';
+import { Subscription } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private userSubcription : Subscription = new Subscription();
   constructor( 
       private afAuth : AngularFireAuth
     , private route:Router
@@ -24,7 +26,15 @@ export class AuthService {
   initAuthListener(){
     this.afAuth.authState.subscribe((fbUser)=>{
       console.log(fbUser);
-      
+      if(fbUser){
+        this.userSubcription=this.afDB.doc(`${fbUser.uid}/user`).valueChanges().subscribe((userObj:any)=>{              
+          const newUser = new User(userObj);
+          const action = new SetAuthAction(newUser);
+          this.store.dispatch(action);          
+        });
+      }else{
+        this.userSubcription.unsubscribe();
+      }
     });
   }
 
