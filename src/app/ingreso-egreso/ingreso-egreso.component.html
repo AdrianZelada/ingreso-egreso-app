@@ -7,14 +7,16 @@
               Especifique el monto y el tipo
             </p>
 
-            <form>
+            <form [formGroup]='form' (ngSubmit)="onSubmit()">
               
               <div class="form-group">
                 <label>Descripción</label>
                 <input type="text" 
                        class="form-control" 
                        placeholder="Descripción"
-                       name="descripcion">
+                       name="description"
+                       formControlName="description"
+                       >
               </div>
 
               <div class="form-group">
@@ -22,7 +24,8 @@
                   <input type="number" 
                          class="form-control" 
                          placeholder="Monto"
-                         name="monto">
+                         formControlName="amount"
+                         name="amount">
                     <p>
                       Debe de ser un monto positivo
                     </p>
@@ -31,25 +34,33 @@
               <div class="form-group">
                   <label>Tipo</label>
                   <br>
-                  <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-                  <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                  <button type="button" (click)="type='egreso'" *ngIf="type==='ingreso'" class="btn btn-primary btn-block">Ingreso</button>
+                  <button type="button" (click)="type='ingreso'" *ngIf="type==='egreso'" class="btn btn-warning btn-block">Egreso</button>
               </div>
 
               <hr>
-              <button type="button" class="btn btn-success mr-2">
+              
+            <div *ngIf="$loading | async as loading">
+
+              <button *ngIf="!loading.isLoading" [disabled]="form.invalid" type="button" type="submit" class="btn btn-success mr-2">
                 <i class="fa fa-save"></i>
                 Agregar
               </button>
+<!-- 
+              <button *ngIf="loading.isLoading" class="btn btn-primary submit-btn btn-block" [disabled]="true">
+                <i class="fa fa-spin fa-sync"></i>
+                Espere Por Favor...
+              </button> -->
 
-              <!-- 
-                <button disabled class="btn btn-success mr-2">
+              
+                <button *ngIf="loading.isLoading" disabled class="btn btn-success mr-2">
                   <i class="fa fa-spin fa-sync"></i>
                   Espere por favor...
                 </button> 
-              -->
+             
               
               <button type="reset" class="btn btn-light">Cancelar</button>
-
+            </div>
             </form>
           </div>
         </div>

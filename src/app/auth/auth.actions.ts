@@ -1,4 +1,4 @@
-import { Action } from "../../../node_modules/@ngrx/store";
+import { Action } from "@ngrx/store";
 import { User } from "./user.model";
 
 const KEY = '[AUTH]'

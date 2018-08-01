@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AppState } from '../../app.reducers';
-import { Store } from '../../../../node_modules/@ngrx/store';
-import { Observable } from '../../../../node_modules/rxjs';
-import { map,switchMap } from '../../../../node_modules/rxjs/operators';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map,switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',

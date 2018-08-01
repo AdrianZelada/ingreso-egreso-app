@@ -14,12 +14,24 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
-                  <td>Descripción</td>
-                  <td>Monto</td>
-                  <td>Tipo</td>
-                  <td>acciones</td>
+              <tbody *ngIf="$ingresoEgreso | async as ingresoEgreso">
+                <tr *ngFor="let item of ingresoEgreso.items">
+                  <td>{{item.description}}</td>
+                  <td>{{item.amount}}</td>
+                  <td>
+                    <span [ngClass]="{
+                      'text-success':item.type == 'ingreso',
+                      'text-danger':item.type == 'egreso'
+                    }">
+                      {{item.type}}
+                    </span>                    
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="delete(item.uid)">
+                      <i class="fa fa-trash"></i>
+                      Borrar
+                    </button>
+                  </td>
                 </tr>
               </tbody>
 
