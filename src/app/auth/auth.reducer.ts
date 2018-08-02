@@ -14,6 +14,11 @@ export function UserReducer(state = initState, action:UserActions.UserActions ):
             return {
                 user:{ ...action.user }
             }
+
+        case UserActions.UNSET_USER:            
+            return {
+                user:null
+            }
     
         default:
             return state;

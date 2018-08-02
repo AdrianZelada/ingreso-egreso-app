@@ -19,7 +19,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { StoreModule} from '@ngrx/store'; 
 import { StoreDevtoolsModule} from '@ngrx/store-devtools'; 
-import { AppReducers} from './app.reducers'
+import { AppReducers} from './app.reducers';
+import { OrdenIngresoEgresoPipe } from './ingreso-egreso/orden-ingreso-egreso.pipe'
+
+import { ChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { AppReducers} from './app.reducers'
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,8 @@ import { AppReducers} from './app.reducers'
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

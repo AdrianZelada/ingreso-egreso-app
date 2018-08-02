@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '../../../../node_modules/@ngrx/store';
 import { AppState } from '../../app.reducers';
 import { Observable } from '../../../../node_modules/rxjs';
-import { map } from '../../../../node_modules/rxjs/operators';
+import { IngresoEgresoService } from '../ingreso-egreso.service';
 
 @Component({
   selector: 'app-detalle',
@@ -11,13 +11,16 @@ import { map } from '../../../../node_modules/rxjs/operators';
 })
 export class DetalleComponent implements OnInit {
   $ingresoEgreso :Observable<any>;
-  constructor(private store:Store<AppState>) { }
+  constructor(private store:Store<AppState>, public ingresoEgresoService: IngresoEgresoService) { }
 
   ngOnInit() {
     this.$ingresoEgreso = this.store.select('ingresoEgreso')
   }
 
-  delete(uid:string){
-    console.log(uid);
+  delete(ingresoEgreso:any){
+    
+    this.ingresoEgresoService.delete(ingresoEgreso).then((data)=>{
+
+    })
   }
 }

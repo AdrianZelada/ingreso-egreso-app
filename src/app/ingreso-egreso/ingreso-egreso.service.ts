@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { AppState } from '../app.reducers';
 import { Store } from '../../../node_modules/@ngrx/store';
 import { filter, map } from '../../../node_modules/rxjs/operators';
-import { SetItemsAction } from './ingreso-egreso.actions';
+import { SetItemsAction, UnsetItemsAction } from './ingreso-egreso.actions';
 import { Subscription } from '../../../node_modules/rxjs';
 
 @Injectable({
@@ -29,6 +29,8 @@ export class IngresoEgresoService {
   unSubcription(){
     this.initSubcription.unsubscribe();
     this.itemsSubcription.unsubscribe();
+    const action = new UnsetItemsAction();
+    this.store.dispatch(action);
   }
 
   create(ingresoEgreso : ingresoegreso):Promise<any>{
@@ -44,6 +46,21 @@ export class IngresoEgresoService {
               Swal('Error',`Error al Creado`,'error');                  
               return Promise.reject(e);                      
             });            
+  }
+
+  delete(ingresoEgreso:ingresoegreso){
+    const user = this.authService.getUser();
+    return this.afDB
+      .doc(`${user.uid}/ingresos-egresos/items/${ingresoEgreso.uid}`)
+      .delete()
+      .then((data)=>{
+        Swal('Deleted',`${ingresoEgreso.description} Borrado`,'success');                  
+        return Promise.resolve(data);        
+      })
+      .catch((e)=>{
+        Swal('Error',`Error al Borrado`,'error');                  
+        return Promise.reject(e);         
+      })
   }
 
   private getItems(uid :string){

@@ -8,7 +8,7 @@ import { User } from './user.model';
 import { AppState } from '../app.reducers';
 import { Store } from '@ngrx/store';
 import { ActivateLoadingAction, FinishLoadingAction } from '../shared/ui.actions';
-import { SetAuthAction } from './auth.actions';
+import { SetAuthAction, UnsetAuthAction } from './auth.actions';
 import { Subscription } from 'rxjs';
 
 @Injectable({
@@ -102,6 +102,8 @@ export class AuthService {
   }
 
   logout(){
+    const action = new UnsetAuthAction();
+    this.store.dispatch(action);
     this.route.navigate(['/login']);      
     this.afAuth.auth.signOut();
   }

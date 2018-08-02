@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IngresoEgresoService } from '../ingreso-egreso/ingreso-egreso.service';
 
 @Component({
@@ -6,13 +6,16 @@ import { IngresoEgresoService } from '../ingreso-egreso/ingreso-egreso.service';
   templateUrl: './dashboard.component.html',
   styles: []
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,OnDestroy {
 
   constructor(private ingresoEgresoService:IngresoEgresoService) { 
     this.ingresoEgresoService.initIngresoEgreso();
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(){    
   }
 
 }

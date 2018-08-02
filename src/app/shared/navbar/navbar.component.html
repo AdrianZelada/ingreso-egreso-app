@@ -9,13 +9,13 @@
     </a>
   </div>
   
-  <div class="navbar-menu-wrapper d-flex align-items-center">
+  <div class="navbar-menu-wrapper d-flex align-items-center" *ngIf="$user | async as user">
    
     <ul class="navbar-nav navbar-nav-right">
 
       <li class="nav-item d-none d-sm-inline-block">
         <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-          <span class="profile-text">Hello, Richard V.Welsh !</span>
+          <span class="profile-text">Hello, {{user.nombre}} !</span>
           <img class="img-xs rounded-circle" src="assets/images/faces/face1.jpg" alt="Profile image">
         </a>
       </li>
