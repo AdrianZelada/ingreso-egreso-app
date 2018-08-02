@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { Observable } from '../../../../node_modules/rxjs';
-import { Store } from '../../../../node_modules/@ngrx/store';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducers';
-import { map } from '../../../../node_modules/rxjs/operators';
+import { map } from 'rxjs/operators';
 import { IngresoEgresoService } from '../../ingreso-egreso/ingreso-egreso.service';
 
 @Component({

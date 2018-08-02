@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from '../../../../node_modules/rxjs';
-import { AppState } from '../../app.reducers';
-import { Store } from '../../../../node_modules/@ngrx/store';
-import { map } from '../../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs';
+import { AppState } from '../ingreso-egreso.reducer'
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs/operators';
 import { ingresoegreso } from '../ingresoEgreso.model';
 
 @Component({

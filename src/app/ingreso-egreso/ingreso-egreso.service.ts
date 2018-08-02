@@ -3,11 +3,11 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { ingresoegreso } from './ingresoEgreso.model';
 import { AuthService } from '../auth/auth.service';
 import Swal from 'sweetalert2';
-import { AppState } from '../app.reducers';
-import { Store } from '../../../node_modules/@ngrx/store';
-import { filter, map } from '../../../node_modules/rxjs/operators';
+import { AppState } from './ingreso-egreso.reducer';
+import { Store } from '@ngrx/store';
+import { filter, map } from 'rxjs/operators';
 import { SetItemsAction, UnsetItemsAction } from './ingreso-egreso.actions';
-import { Subscription } from '../../../node_modules/rxjs';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

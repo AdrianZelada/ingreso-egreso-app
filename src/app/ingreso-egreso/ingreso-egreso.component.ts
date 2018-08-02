@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ingresoegreso } from './ingresoEgreso.model';
 import { IngresoEgresoService } from './ingreso-egreso.service';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducers';
+import { AppState } from './ingreso-egreso.reducer';
+
 import { Observable } from 'rxjs';
 import { ActivateLoadingAction, FinishLoadingAction } from '../shared/ui.actions';
 

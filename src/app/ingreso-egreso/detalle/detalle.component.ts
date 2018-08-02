@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '../../../../node_modules/@ngrx/store';
-import { AppState } from '../../app.reducers';
-import { Observable } from '../../../../node_modules/rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../ingreso-egreso.reducer';
+import { Observable } from 'rxjs';
 import { IngresoEgresoService } from '../ingreso-egreso.service';
 
 @Component({

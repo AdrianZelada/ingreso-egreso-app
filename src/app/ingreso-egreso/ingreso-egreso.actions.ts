@@ -1,8 +1,6 @@
 import { Action } from "@ngrx/store";
-// import { IngresoEgreso } from "./ingreso-egreso.model";
 import { ingresoegreso } from "./ingresoEgreso.model";
 
-const KEYITEMS = '[INGRESO EGRESO]';
 export const SET_ITEMS = `[INGRESO EGRESO] Set Items`;
 export const UNSET_ITEMS = `[INGRESO EGRESO] Unset Items`;
 

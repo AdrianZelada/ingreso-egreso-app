@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from '../../../../node_modules/rxjs';
-import { Store } from '../../../../node_modules/@ngrx/store';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducers';
-import { map } from '../../../../node_modules/rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
